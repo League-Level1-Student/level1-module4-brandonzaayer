@@ -61,15 +61,15 @@ quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
 frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-firstButton = createButton("100");
+firstButton = createButton("200");
 		// 7. Add the firstButton to the quizPanel
-quizPanel.add(firstButton, constraints);
+quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-secondButton = createButton("200");
+secondButton = createButton("400");
 		// 10. Add the secondButton to the quizPanel
 quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
@@ -120,6 +120,7 @@ return(b);
 		// If the buttonPressed was the firstButton
 if(buttonPressed == firstButton) {
 	askQuestion("What is the capital of Peru?", "Lima", 200);
+	firstButton.setText(" ");
 }
 			// Call the askQuestion() method
  
@@ -128,18 +129,21 @@ if(buttonPressed == firstButton) {
 		// If the buttonPressed was the secondButton
 else if(buttonPressed == secondButton) {
 	askQuestion("What is the country that starts with the letter 'Q'?", "Qatar", 400);
+	secondButton.setText(" ");
+	
 }
 else if(buttonPressed == thirdButton) {
 	askQuestion(" How many countries border Russia?", "14", 600);
+	thirdButton.setText(" ");
 }
 else if(buttonPressed == fourthButton) {
 	askQuestion("Which is the largest of the Canary Islands?", "Tenerife", 800);
+	fourthButton.setText(" ");
 }
 			// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
-secondButton.setText(" ");
-firstButton.setText(" ");
+
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
@@ -155,6 +159,8 @@ firstButton.setText(" ");
 if(a.equals(correctAnswer)) {
 	
 	JOptionPane.showMessageDialog(null, "Correct!");
+	 score = score + prizeMoney;
+	updateScore();
 }
 			// Increase the score by the prizeMoney
 
@@ -162,14 +168,18 @@ if(a.equals(correctAnswer)) {
 
 		// Otherwise
 else {
-	int score = score-
+	score = score - prizeMoney;
+	if(score<=0) {
+		score=0;
+	}
+	updateScore();
 }
 			// Decrement the score by the prizeMoney
 
 			// Pop up a message to tell the user they were wrong and give them the correct answer
 
 		// Call the updateScore() method
-updateScore();
+
 	}
 
 	public void playJeopardyTheme() {
