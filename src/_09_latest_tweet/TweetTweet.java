@@ -39,7 +39,7 @@ public class TweetTweet implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		String search = t.getText();
-		getLatestTweet(search);
+		System.out.println(getLatestTweet(search));
 	}
 	private String getLatestTweet(String searchingFor) {
 
